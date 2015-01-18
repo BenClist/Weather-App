@@ -69,7 +69,9 @@ function getLocationAndWeather(){
 
 function jsonFlickrApi(data){
   if (data.photos.pages > 0){
-    var photo = data.photos.photo[0];
+    var length = data.photos.photo.length - 1;
+    var index = Math.floor((Math.random() * length) + 1);
+    var photo = data.photos.photo[index];
     document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
     document.querySelector("#image-source").setAttribute("href", "http://www.flickr.com/photos/" + photo.owner + "/" + photo.id);
   }
